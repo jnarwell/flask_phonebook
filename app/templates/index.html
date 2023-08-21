@@ -7,4 +7,20 @@
 {% endblock header %}
 
 {% block content %}
+    <div class="col-12">
+        {% for contact in contacts %}
+            <div class="card my-3 bg-primary-subtle border-danger-subtle">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ contact.first, contact.last }}</h5>
+                        <h6 class="card-subtle">By: {{ contact.phone }}</h6>
+                        <p class="card-text">{{ contact.address }}</p>
+                        <p class="card-text"><small class="text-body-secondary">{{ contact.date_created.strftime('%A %b %d, %Y at %I:%M%p')  }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

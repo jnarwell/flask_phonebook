@@ -6,7 +6,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    contacts = db.session.execute(db.select(Phonebook).order_by(Phonebook.date_created.desc())).scalars().all()
+    return render_template('index.html', contacts = contacts)
 
 @app.route('/contact', methods=["GET", "POST"])
 def contact():
